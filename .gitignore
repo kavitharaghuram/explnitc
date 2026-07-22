@@ -1,0 +1,20 @@
+# Compiled binaries
+spl/spl
+xfs-interface/xfs-interface
+xsm_dev/xsm
+
+# Object files
+*.o
+
+# Generated disk/filesystem images
+xfs-interface/disk.xfs
+
+# macOS/editor junk
+.DS_Store
+.vscode/
+*.dSYM/
+
+# Core dumps
+core
+core
+core.*
