@@ -25,3 +25,5 @@ yacc_test/lex.yy.c
 lex-yacc_test/lex.yy.c
 lex_test/wrap_test
 lex_test/basic
+lex_test/count_lwc
+lex_test/list_comments
