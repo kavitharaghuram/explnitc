@@ -18,3 +18,10 @@ xfs-interface/disk.xfs
 core
 core
 core.*
+
+# Lex-generated files
+lex_test/lex.yy.c
+yacc_test/lex.yy.c
+lex-yacc_test/lex.yy.c
+lex_test/wrap_test
+lex_test/basic
