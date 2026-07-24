@@ -27,3 +27,7 @@ lex_test/wrap_test
 lex_test/basic
 lex_test/count_lwc
 lex_test/list_comments
+
+# YACC-generated files (own tutorial work)
+yacc_test/y.tab.c
+yacc_test/a.out
