@@ -31,3 +31,7 @@ lex_test/list_comments
 # YACC-generated files (own tutorial work)
 yacc_test/y.tab.c
 yacc_test/a.out
+
+# YACC-generated files (own tutorial work)
+yacc_test/y.tab.c
+yacc_test/a.out
