@@ -1,0 +1,15 @@
+0
+2056
+0
+0
+0
+0
+0
+0
+BRKP
+MOV R0, 5
+MOV R3, R0
+MOV R5, 4096
+MOV [R5], R3
+BRKP
+EOF
