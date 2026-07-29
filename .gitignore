@@ -35,3 +35,9 @@ yacc_test/a.out
 # YACC-generated files (own tutorial work)
 yacc_test/y.tab.c
 yacc_test/a.out
+
+# LEX+YACC generated files (own tutorial work)
+lex-yacc_test/y.tab.c
+lex-yacc_test/y.tab.h
+lex-yacc_test/lex.yy.c
+lex-yacc_test/a.out
