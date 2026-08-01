@@ -48,3 +48,9 @@ expr_tree/a.out
 expr_tree/lex.yy.c
 expr_tree/y.tab.c
 expr_tree/y.tab.h
+
+#expr_tree_prefix
+expr_tree_prefix/a.out
+expr_tree_prefix/lex.yy.c
+expr_tree_prefix/y.tab.c
+expr_tree_prefix/y.tab.h
