@@ -27,6 +27,7 @@ lex_test/wrap_test
 lex_test/basic
 lex_test/count_lwc
 lex_test/list_comments
+lex_test/a.out
 
 # YACC-generated files (own tutorial work)
 yacc_test/y.tab.c
@@ -41,3 +42,9 @@ lex-yacc_test/y.tab.c
 lex-yacc_test/y.tab.h
 lex-yacc_test/lex.yy.c
 lex-yacc_test/a.out
+
+#expr_tree
+expr_tree/a.out
+expr_tree/lex.yy.c
+expr_tree/y.tab.c
+expr_tree/y.tab.h
