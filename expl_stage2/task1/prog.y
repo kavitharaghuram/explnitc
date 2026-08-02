@@ -67,12 +67,65 @@ tnode* createTree(int val, int type, char* varname, int nodetype, tnode* left, t
     temp->right=right;
     return temp;
 }
+void printTree(struct tnode *t){
+    if(t==NULL)
+        return;
+
+    switch(t->nodetype){
+
+        case NODE_NUM:
+            printf("NUM(%d)\n", t->val);
+            break;
+
+        case NODE_ID:
+            printf("ID(%s)\n", t->varname);
+            break;
+
+        case NODE_PLUS:
+            printf("+\n");
+            break;
+
+        case NODE_MINUS:
+            printf("-\n");
+            break;
+
+        case NODE_MUL:
+            printf("*\n");
+            break;
+
+        case NODE_DIV:
+            printf("/\n");
+            break;
+
+        case NODE_ASSIGN:
+            printf("ASSIGN\n");
+            break;
+
+        case NODE_READ:
+            printf("READ\n");
+            break;
+
+        case NODE_WRITE:
+            printf("WRITE\n");
+            break;
+
+        case NODE_CONNECT:
+            printf("CONNECTOR\n");
+            break;
+
+        default:
+            printf("UNKNOWN\n");
+    }
+
+    printTree(t->left);
+    printTree(t->right);
+}
 void yyerror(char* s){
     printf("%s\n", s);
 }
 int main(){
     yyparse();
-    if(root != NULL)
-    printf("AST created successfully\n");
+    printf("AST created successfully!\n\n");
+    printTree(root);
     return 0;
 }

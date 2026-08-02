@@ -28,4 +28,5 @@ typedef struct tnode{
 } tnode;
 
 tnode* createTree(int val, int type, char* varname, int nodetype, tnode* left, tnode* right);
+void printTree(struct tnode *t);
 #endif
