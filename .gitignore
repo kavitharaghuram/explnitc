@@ -66,3 +66,9 @@ expl_stage2/task2/a.out
 expl_stage2/task2/lex.yy.c
 expl_stage2/task2/y.tab.c
 expl_stage2/task2/y.tab.h
+
+#expl_stage2/ex1
+expl_stage2/ex1/a.out
+expl_stage2/ex1/lex.yy.c
+expl_stage2/ex1/y.tab.c
+expl_stage2/ex1/y.tab.h
