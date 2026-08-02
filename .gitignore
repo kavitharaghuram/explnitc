@@ -54,3 +54,15 @@ expr_tree_prefix/a.out
 expr_tree_prefix/lex.yy.c
 expr_tree_prefix/y.tab.c
 expr_tree_prefix/y.tab.h
+
+#expl_stage2/task1
+expl_stage2/task1/a.out
+expl_stage2/task1/lex.yy.c
+expl_stage2/task1/y.tab.c
+expl_stage2/task1/y.tab.h
+
+#expl_stage2/task2
+expl_stage2/task2/a.out
+expl_stage2/task2/lex.yy.c
+expl_stage2/task2/y.tab.c
+expl_stage2/task2/y.tab.h
