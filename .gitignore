@@ -20,28 +20,28 @@ core
 core.*
 
 # Lex-generated files
-lex_test/lex.yy.c
-yacc_test/lex.yy.c
-lex-yacc_test/lex.yy.c
-lex_test/wrap_test
-lex_test/basic
-lex_test/count_lwc
-lex_test/list_comments
-lex_test/a.out
+expl_stage0/lex_test/lex.yy.c
+expl_stage0/yacc_test/lex.yy.c
+expl_stage0/lex-yacc_test/lex.yy.c
+expl_stage0/lex_test/wrap_test
+expl_stage0/lex_test/basic
+expl_stage0/lex_test/count_lwc
+expl_stage0/lex_test/list_comments
+expl_stage0/lex_test/a.out
+expl_stage0/lex_test/lex.yy.c
+# YACC-generated files (own tutorial work)
+expl_stage0/yacc_test/y.tab.c
+expl_stage0/yacc_test/a.out
 
 # YACC-generated files (own tutorial work)
-yacc_test/y.tab.c
-yacc_test/a.out
-
-# YACC-generated files (own tutorial work)
-yacc_test/y.tab.c
-yacc_test/a.out
+expl_stage0/yacc_test/y.tab.c
+expl_stage0/yacc_test/a.out
 
 # LEX+YACC generated files (own tutorial work)
-lex-yacc_test/y.tab.c
-lex-yacc_test/y.tab.h
-lex-yacc_test/lex.yy.c
-lex-yacc_test/a.out
+expl_stage0/lex-yacc_test/y.tab.c
+expl_stage0/lex-yacc_test/y.tab.h
+expl_stage0/lex-yacc_test/lex.yy.c
+expl_stage0/lex-yacc_test/a.out
 
 #expl_stage1/expr_tree
 expl_stage1/expr_tree/a.out
