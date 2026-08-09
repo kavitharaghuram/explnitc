@@ -1,0 +1,20 @@
+begin
+read(n);
+s = 0;
+i = 0;
+c = 0;
+
+while (i < n) do
+    read(x);
+    s = s + x;
+
+    if (x < 0) then
+        c = c + 1;
+    endif;
+
+    i = i + 1;
+endwhile;
+
+write(s);
+write(c);
+end;
