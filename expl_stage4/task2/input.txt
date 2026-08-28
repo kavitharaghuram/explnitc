@@ -1,0 +1,10 @@
+decl
+    int a, b;
+    str msg;
+enddecl
+
+begin
+read(a);
+b=a+10;
+write(b);
+end;
