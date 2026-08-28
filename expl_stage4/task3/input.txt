@@ -1,0 +1,11 @@
+decl
+    int a[10];
+    str msg;
+enddecl
+
+begin
+a[2]=100;
+a[3]=200;
+write(a[1+1]);
+write(a[2+1]);
+end;

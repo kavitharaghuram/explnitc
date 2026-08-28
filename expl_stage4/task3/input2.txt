@@ -1,0 +1,6 @@
+decl
+int a,b;
+int c,a;
+enddecl
+begin
+end;
