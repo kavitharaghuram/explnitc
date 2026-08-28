@@ -25,6 +25,7 @@ int getAddress(tnode* t);
 void writeHeader();
 void writeExit();
 void printTree(tnode* t, int level);
+int arrayErrorLabel=-1;
 %}
 
 %union{
@@ -246,6 +247,12 @@ E
                 printf("%s is a scalar, cannot index it\n", $1->varname);
                 exit(1);
             }
+            if($3->nodetype==NODE_NUM){
+                if($3->val<0 || $3->val>=entry->size){
+                    printf("array index out of bounds\n");
+                    exit(1);
+                }
+            }
             $1->Gentry=entry;
             $1->type=entry->type;
             $$= createTree(0, entry->type, NULL, NODE_ARRAY, $1, NULL, $3);
@@ -373,6 +380,27 @@ int codeGenAddr(tnode* t){
         int r= getReg();
         fprintf(target_file, "MOV R%d, %d\n", r, t->left->Gentry->binding);
         int rindex=codeGenExpr(t->right);
+        if(t->right->nodetype!=NODE_NUM){
+            if(arrayErrorLabel==-1)arrayErrorLabel=getLabel();
+            int passLabel=getLabel();
+            int rlo=getReg();
+            fprintf(target_file, "MOV R%d, R%d\n", rlo, rindex);
+            int rzero=getReg();
+            fprintf(target_file, "MOV R%d, 0\n", rzero);
+            fprintf(target_file, "LT R%d, R%d\n", rlo, rzero);
+            fprintf(target_file, "JNZ R%d, L%d\n", rlo, arrayErrorLabel);
+            freeReg(rzero);
+            freeReg(rlo);
+
+            int rhi = getReg();
+            fprintf(target_file, "MOV R%d, R%d\n", rhi, rindex);
+            int rsize = getReg();
+            fprintf(target_file, "MOV R%d, %d\n", rsize, t->left->Gentry->size);
+            fprintf(target_file, "GE R%d, R%d\n", rhi, rsize);
+            fprintf(target_file, "JNZ R%d, L%d\n", rhi, arrayErrorLabel);
+            freeReg(rsize);
+            freeReg(rhi);
+        }
         fprintf(target_file, "ADD R%d, R%d\n", r, rindex);
         freeReg(rindex);
         return r;
@@ -670,6 +698,19 @@ void codeGen(tnode *t){
         
     }
 }
+
+void writeArrayErrorHandler(){
+    if(arrayErrorLabel==-1)return;
+    fprintf(target_file, "L%d:\n", arrayErrorLabel);
+    fprintf(target_file, "MOV R0, 0\n");
+    fprintf(target_file, "MOV R1, \"Exit\"\n");
+    fprintf(target_file, "PUSH R1\n");
+    fprintf(target_file, "PUSH R0\n");
+    fprintf(target_file, "PUSH R0\n");
+    fprintf(target_file, "PUSH R0\n");
+    fprintf(target_file, "PUSH R0\n");
+    fprintf(target_file, "CALL 0\n");
+}
 tnode* createTree(int val, int type, char* varname, int nodetype, tnode* left, tnode* middle, tnode* right){
     tnode* temp= (tnode*)malloc(sizeof(tnode));
     temp->val=val;
@@ -866,6 +907,7 @@ int main()
     target_file=fopen("output.xsm", "w");
     writeHeader();
     codeGen(root);
+    writeArrayErrorHandler();
     writeExit();
     fclose(target_file);
     return 0;

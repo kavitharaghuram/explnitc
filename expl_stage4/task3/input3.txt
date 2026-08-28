@@ -1,5 +1,10 @@
 decl
-int a,b
+    int a[5];
+    int i;
 enddecl
+
 begin
+a[4]=7;
+write(a[4]);
+write(999);
 end;

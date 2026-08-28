@@ -7,16 +7,9 @@ begin
 a[0]=10;
 a[1]=20;
 a[2]=30;
-a[3]=40;
-a[4]=50;
 
-i=2;
-write(a[i]);
-
-i=4;
-write(a[i]);
-
-i=7;
+i=0;
+i=i-1;
 write(a[i]);
 
 write(999);
