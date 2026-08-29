@@ -1,0 +1,22 @@
+decl
+int a, b;
+int *p, *q;
+enddecl
+begin
+a = 10;
+b = 20;
+
+p = &a;
+q = &b;
+
+write(a);
+write(b);
+write(*p);
+write(*q);
+
+*p = 50;
+*q = 60;
+
+write(a);
+write(b);
+end;

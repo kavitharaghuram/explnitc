@@ -1,0 +1,8 @@
+decl
+int a, *p;
+enddecl
+begin
+a = 10;
+p = &a;
+write(*p);
+end;

@@ -1,0 +1,28 @@
+decl
+    int n,i,j;
+enddecl
+
+begin
+    read(n);
+    j=0;
+
+    if(n<=1) then
+        j=1;
+    else
+        i=2;
+
+        while(i<=n/2) do
+            if((n/i)*i==n) then
+                j=1;
+            endif;
+            i=i+1;
+        endwhile;
+    endif;
+
+    if(j==0) then
+        write(1);
+    else
+        write(0);
+    endif;
+
+end;
