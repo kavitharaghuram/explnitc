@@ -1,0 +1,13 @@
+decl
+    int a[3][3];
+    int i;
+    int j;
+enddecl
+
+begin
+a[1][1]=5;
+i=1;
+j=5;
+write(a[i][j]);
+write(777);
+end;

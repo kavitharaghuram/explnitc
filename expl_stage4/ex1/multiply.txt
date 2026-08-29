@@ -1,0 +1,42 @@
+decl
+    int a[2][2];
+    int b[2][2];
+    int c[2][2];
+    int i;
+    int j;
+    int k;
+    int sum;
+enddecl
+
+begin
+a[0][0]=1;
+a[0][1]=2;
+a[1][0]=3;
+a[1][1]=4;
+
+b[0][0]=5;
+b[0][1]=6;
+b[1][0]=7;
+b[1][1]=8;
+
+i=0;
+while(i<2) do
+    j=0;
+    while(j<2) do
+        sum=0;
+        k=0;
+        while(k<2) do
+            sum=sum+a[i][k]*b[k][j];
+            k=k+1;
+        endwhile;
+        c[i][j]=sum;
+        j=j+1;
+    endwhile;
+    i=i+1;
+endwhile;
+
+write(c[0][0]);
+write(c[0][1]);
+write(c[1][0]);
+write(c[1][1]);
+end;

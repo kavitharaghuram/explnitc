@@ -1,0 +1,35 @@
+decl
+    int a[3][3];
+    int i;
+    int j;
+enddecl
+
+begin
+a[0][0]=1;
+a[0][1]=2;
+a[0][2]=3;
+a[1][0]=4;
+a[1][1]=5;
+a[1][2]=6;
+a[2][0]=7;
+a[2][1]=8;
+a[2][2]=9;
+
+i=1;
+j=2;
+write(a[i][j]);
+
+write(a[0][0]);
+
+i=2;
+j=1;
+write(a[i][j]);
+
+write(999);
+
+i=3;
+j=0;
+write(a[i][j]);
+
+write(888);
+end;
