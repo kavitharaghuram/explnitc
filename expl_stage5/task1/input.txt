@@ -1,0 +1,10 @@
+decl
+int a;
+str b;
+int arr[5];
+int factorial(int n);
+int add(int x, int y);
+enddecl
+
+begin
+end;
