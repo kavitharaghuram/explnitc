@@ -1,0 +1,13 @@
+begin
+    a = 0;
+    while (a < 5) do
+        a = a + 1;
+        if (a == 2) then
+            continue;
+        endif;
+        if (a == 4) then
+            break;
+        endif;
+        write(a);
+    endwhile;
+end;
