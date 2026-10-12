@@ -1,0 +1,17 @@
+decl
+    int main();
+enddecl
+
+int main(){
+    decl
+        tuple student(int name, int rollno) a, b;
+    enddecl
+    begin
+        a.name = 7;
+        a.rollno = 5;
+        b = a;
+        write(b.rollno);
+        write(b.name);
+        return 0;
+    end
+}
