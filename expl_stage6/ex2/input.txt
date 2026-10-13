@@ -1,0 +1,46 @@
+type
+    node {
+        int data;
+        node next;
+    }
+endtype
+decl
+    node head;
+    int main();
+enddecl
+int main(){
+    decl
+        int retval, i, round, sum;
+        node t;
+    enddecl
+    begin
+        retval = initialize();
+        round = 0;
+        while (round < 3) do
+            head = NULL;
+            i = 1;
+            while (i <= 100) do
+                t = alloc();
+                t.data = i;
+                t.next = head;
+                head = t;
+                i = i + 1;
+            endwhile;
+            sum = 0;
+            t = head;
+            while (t != NULL) do
+                sum = sum + t.data;
+                t = t.next;
+            endwhile;
+            write(sum);
+            while (head != NULL) do
+                t = head.next;
+                retval = free(head);
+                head = t;
+            endwhile;
+            round = round + 1;
+        endwhile;
+        write(retval);
+        return 0;
+    end
+}
