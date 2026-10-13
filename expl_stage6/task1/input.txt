@@ -1,0 +1,46 @@
+type
+    linkedList {
+        int data;
+        linkedList next;
+    }
+    markList {
+        str name;
+        linkedList marks;
+    }
+endtype
+decl
+    markList mList, temp;
+    int f(markList m, int k);
+    int main();
+enddecl
+
+int f(markList m, int k){
+    decl
+        markList t;
+    enddecl
+    begin
+        t = m;
+        t = null;
+        if (m.marks.data > k) then
+            write(m.marks.data);
+        endif;
+        return 0;
+    end
+}
+
+int main(){
+    decl
+        int x;
+    enddecl
+    begin
+        mList = temp;
+        temp = null;
+        x = mList.marks.data;
+        mList.marks.data = x + 1;
+        mList.marks.next = null;
+        mList.marks.next.data = 7;
+        f(mList, 3);
+        f(null, 3);
+        return 0;
+    end
+}
