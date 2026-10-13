@@ -5,29 +5,95 @@ type
         bst right;
     }
 endtype
+
 decl
-    bst root;
+    int in, opt;
     bst insert(bst h, int key);
+    int inOrder(bst h);
+    int preOrder(bst h);
+    int postOrder(bst h);
     int main();
 enddecl
 
-bst insert(bst h, int key){
+bst insert(bst h, int key)
+{
     begin
-        h.a = key;
-        h.left = null;
-        h.right = h.left;
+        if (h == NULL) then
+            h = alloc();
+            h.a = key;
+            h.left = NULL;
+            h.right = NULL;
+        else
+            if (key < h.a) then
+                h.left = insert(h.left, key);
+            else
+                if (key > h.a) then
+                    h.right = insert(h.right, key);
+                endif;
+            endif;
+        endif;
+
         return h;
     end
 }
 
-int main(){
+int inOrder(bst h)
+{
+    begin
+        if (h != NULL) then
+            in = inOrder(h.left);
+            write(h.a);
+            in = inOrder(h.right);
+        endif;
+        return 1;
+    end
+}
+
+int preOrder(bst h)
+{
+    begin
+        if (h != NULL) then
+            write(h.a);
+            in = preOrder(h.left);
+            in = preOrder(h.right);
+        endif;
+        return 1;
+    end
+}
+
+int postOrder(bst h)
+{
+    begin
+        if (h != NULL) then
+            in = postOrder(h.left);
+            in = postOrder(h.right);
+            write(h.a);
+        endif;
+        return 1;
+    end
+}
+
+int main()
+{
     decl
-        int x;
+        int val, flag;
+        bst Root;
     enddecl
     begin
-        root = insert(null, 5);
-        x = root.left.a;
-        root.right = root;
-        return 0;
+        val = initialize();
+        Root = NULL;
+
+        read(val);
+
+        while (val != 0) do
+            Root = insert(Root, val);
+            read(val);
+        endwhile;
+
+        in = inOrder(Root);
+        in = preOrder(Root);
+        in = postOrder(Root);
+
+        return 9;
     end
 }
