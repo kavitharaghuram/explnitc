@@ -1,0 +1,87 @@
+decl
+    int key[50], lc[50], rc[50];
+    int cnt, tmp;
+    int insert(int h, int k);
+    int inOrder(int h);
+    int preOrder(int h);
+    int postOrder(int h);
+    int main();
+enddecl
+
+int insert(int h, int k)
+{
+    begin
+        if (h == 0 - 1) then
+            h = cnt;
+            cnt = cnt + 1;
+            key[h] = k;
+            lc[h] = 0 - 1;
+            rc[h] = 0 - 1;
+        else
+            if (k < key[h]) then
+                lc[h] = insert(lc[h], k);
+            else
+                if (k > key[h]) then
+                    rc[h] = insert(rc[h], k);
+                endif;
+            endif;
+        endif;
+        return h;
+    end
+}
+
+int inOrder(int h)
+{
+    begin
+        if (h != 0 - 1) then
+            tmp = inOrder(lc[h]);
+            write(key[h]);
+            tmp = inOrder(rc[h]);
+        endif;
+        return 1;
+    end
+}
+
+int preOrder(int h)
+{
+    begin
+        if (h != 0 - 1) then
+            write(key[h]);
+            tmp = preOrder(lc[h]);
+            tmp = preOrder(rc[h]);
+        endif;
+        return 1;
+    end
+}
+
+int postOrder(int h)
+{
+    begin
+        if (h != 0 - 1) then
+            tmp = postOrder(lc[h]);
+            tmp = postOrder(rc[h]);
+            write(key[h]);
+        endif;
+        return 1;
+    end
+}
+
+int main()
+{
+    decl
+        int val, root;
+    enddecl
+    begin
+        cnt = 0;
+        root = 0 - 1;
+        read(val);
+        while (val != 0) do
+            root = insert(root, val);
+            read(val);
+        endwhile;
+        tmp = inOrder(root);
+        tmp = preOrder(root);
+        tmp = postOrder(root);
+        return 9;
+    end
+}

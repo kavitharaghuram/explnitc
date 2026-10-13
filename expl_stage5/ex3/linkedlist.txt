@@ -1,0 +1,40 @@
+decl
+    int data[50], next[50];
+    int head, cnt;
+    int main();
+enddecl
+
+int main()
+{
+    decl
+        int length, x, p, q;
+    enddecl
+    begin
+        head = 0 - 1;
+        cnt = 0;
+        read(length);
+        q = 0 - 1;
+        while (length != 0) do
+            read(x);
+            p = cnt;
+            cnt = cnt + 1;
+            data[p] = x;
+            next[p] = 0 - 1;
+            if (head == 0 - 1) then
+                head = p;
+                q = p;
+            else
+                next[q] = p;
+                q = next[q];
+            endif;
+            length = length - 1;
+        endwhile;
+
+        p = head;
+        while (p != 0 - 1) do
+            write(data[p]);
+            p = next[p];
+        endwhile;
+        return 1;
+    end
+}
