@@ -1,0 +1,59 @@
+type
+    node {
+        int data;
+        node next;
+    }
+endtype
+decl
+    node g[2][2];
+    int main();
+enddecl
+int main(){
+    decl
+        int retval, i, j;
+    enddecl
+    begin
+        retval = initialize();
+        i = 0;
+        while (i < 2) do
+            j = 0;
+            while (j < 2) do
+                g[i][j] = alloc();
+                g[i][j].data = i * 10 + j;
+                g[i][j].next = NULL;
+                j = j + 1;
+            endwhile;
+            i = i + 1;
+        endwhile;
+
+        g[0][0].next = g[1][1];
+        write(g[0][0].next.data);
+
+        i = 0;
+        while (i < 2) do
+            j = 0;
+            while (j < 2) do
+                write(g[i][j].data);
+                j = j + 1;
+            endwhile;
+            i = i + 1;
+        endwhile;
+
+        i = 0;
+        while (i < 2) do
+            j = 0;
+            while (j < 2) do
+                retval = free(g[i][j]);
+                g[i][j] = NULL;
+                j = j + 1;
+            endwhile;
+            i = i + 1;
+        endwhile;
+
+        if (g[1][1] == NULL) then
+            write(1);
+        endif;
+        write(retval);
+        return 0;
+    end
+}

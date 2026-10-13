@@ -1,0 +1,33 @@
+type
+    bst {
+        int a;
+        bst left;
+        bst right;
+    }
+endtype
+decl
+    bst root;
+    bst insert(bst h, int key);
+    int main();
+enddecl
+
+bst insert(bst h, int key){
+    begin
+        h.a = key;
+        h.left = null;
+        h.right = h.left;
+        return h;
+    end
+}
+
+int main(){
+    decl
+        int x;
+    enddecl
+    begin
+        root = insert(null, 5);
+        x = root.left.a;
+        root.right = root;
+        return 0;
+    end
+}
