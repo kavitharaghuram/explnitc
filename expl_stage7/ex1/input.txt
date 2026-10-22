@@ -1,0 +1,35 @@
+class
+Counter {
+    decl
+        int count;
+        int init();
+        int inc(int by);
+        int get();
+    enddecl
+    int init(){ begin self.count = 0; return 1; end }
+    int inc(int by){ begin self.count = self.count + by; return self.count; end }
+    int get(){ begin return self.count; end }
+}
+endclass
+decl
+    Counter c;
+    int bump(Counter k, int n);
+    int main();
+enddecl
+int bump(Counter k, int n){
+    begin
+        return k.inc(n);
+    end
+}
+int main(){
+    decl int x; enddecl
+    begin
+        initialize();
+        c = new(Counter);
+        x = c.init();
+        x = bump(c, 5);
+        x = bump(c, 3);
+        write(c.get());
+        return 0;
+    end
+}

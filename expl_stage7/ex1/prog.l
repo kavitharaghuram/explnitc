@@ -1,0 +1,77 @@
+%{
+    #include "expl.h"
+    #include "y.tab.h"
+%}
+%%
+"begin" {return BEGIN_; }
+"end" {return END; }
+"read" {return READ; }
+"write" {return WRITE; }
+"if" {return IF;}
+"then" {return THEN; }
+"else" {return ELSE; }
+"endif" {return ENDIF; }
+"break" {return BREAK; }
+"continue" {return CONTINUE; }
+"while" {return WHILE; }
+"do" {return DO; }
+"return" { return RETURN; }
+"repeat" {return REPEAT; }
+"until"  {return UNTIL;  }
+"endwhile" {return ENDWHILE; }
+"decl" {return DECL; }
+"enddecl" {return ENDDECL; }
+"int" {return INT; }
+"str" {return STR; }
+"class"    { return CLASS; }
+"endclass" { return ENDCLASS; }
+"extends"  { return EXTENDS; }   
+"new"      { return NEW; }
+"delete"   { return DELETE; }
+"self"     { return SELF; }
+"," {return ','; }
+"["     { return '['; }
+"]"     { return ']'; }
+"{"     return '{';
+"}"     return '}';
+"<=" {return LE; }
+">=" {return GE; }
+"<" {return LT; }
+">" {return GT; }
+"==" {return EQ; }
+"!=" {return NE; }
+"&" {return '&'; }
+"type"    { return TYPE; }
+"endtype" { return ENDTYPE; }
+"NULL"       { return NULL_; }
+"alloc"      { return ALLOC; }
+"free"       { return FREE; }
+"initialize" { return INITIALIZE; }
+"." { return '.';}
+
+
+[0-9]+ {yylval.node= createTree(atoi(yytext), tint, NULL, NODE_NUM, NULL, NULL, NULL); 
+    return NUM;
+    }
+[a-zA-Z_][a-zA-Z0-9_]* {yylval.node=createTree(0, tvoid, strdup(yytext), NODE_ID, NULL, NULL, NULL);
+    return ID; 
+    }
+"+"            { return '+'; }
+"-"            { return '-'; }
+"*"            { return '*'; }
+"/"            { return '/'; }
+"="            { return '='; }
+
+"("            { return '('; }
+")"            { return ')'; }
+
+";"            { return ';'; }
+
+[ \t\r\n]+     ;
+
+.              { printf("Invalid character: %s\n", yytext);}
+
+%%
+int yywrap(){
+    return 1;
+}
