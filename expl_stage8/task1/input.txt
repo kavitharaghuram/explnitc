@@ -1,0 +1,46 @@
+class
+Person {
+    decl
+        int age;
+        int init(int a);
+        int show();
+    enddecl
+    int init(int a){ begin self.age = a; return 1; end }
+    int show(){ begin write(self.age); return 1; end }
+}
+Student extends Person {
+    decl
+        int marks;
+        int setMarks(int m);
+        int show();
+    enddecl
+    int setMarks(int m){ begin self.marks = m; return 1; end }
+    int show(){
+        decl int t; enddecl
+        begin
+            t = self.init(5);
+            write(self.age);
+            write(self.marks);
+            return 1;
+        end
+    }
+}
+endclass
+decl
+    Person p;
+    Student s;
+    int main();
+enddecl
+int main(){
+    decl int x; enddecl
+    begin
+        initialize();
+        p = new(Student);
+        s = new(Student);
+        x = s.init(7);
+        x = s.setMarks(9);
+        p = s;
+        x = p.show();
+        return 0;
+    end
+}
