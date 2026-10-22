@@ -1,0 +1,31 @@
+class
+Counter {
+    decl
+        int init();
+    enddecl
+    int init(){ begin return 1; end }
+}
+Other {
+    decl
+        int ping();
+    enddecl
+    int ping(){ begin return 2; end }
+}
+endclass
+decl
+    int work(int n);
+    int main();
+enddecl
+int work(int n){
+    decl Counter t; int x; enddecl
+    begin
+        t = new(Other);
+        x = t.init();
+        return x;
+    end
+}
+int main(){
+    begin
+        return 0;
+    end
+}

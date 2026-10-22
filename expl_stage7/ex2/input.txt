@@ -1,0 +1,42 @@
+class
+Counter {
+    decl
+        int count;
+        int init();
+        int inc(int by);
+        int get();
+    enddecl
+    int init(){ begin self.count = 0; return 1; end }
+    int inc(int by){ begin self.count = self.count + by; return self.count; end }
+    int get(){ begin return self.count; end }
+}
+endclass
+decl
+    int work(int n);
+    int main();
+enddecl
+int work(int n){
+    decl Counter t; int x; enddecl
+    begin
+        t = new(Counter);
+        x = t.init();
+        x = t.inc(n);
+        x = t.inc(n);
+        x = t.get();
+        delete(t);
+        return x;
+    end
+}
+int main(){
+    decl Counter c; int x; enddecl
+    begin
+        initialize();
+        c = new(Counter);
+        x = c.init();
+        x = c.inc(4);
+        write(c.get());
+        write(work(10));
+        write(c.get());
+        return 0;
+    end
+}
