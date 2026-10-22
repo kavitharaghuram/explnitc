@@ -1,0 +1,48 @@
+class
+A {
+    decl
+        int f();
+    enddecl
+    int f(){ begin return 1; end }
+}
+B extends A {
+    decl
+        int f();
+    enddecl
+    int f(){ begin return 2; end }
+}
+Holder {
+    decl
+        int k;
+        A item;
+        int setup();
+        int run();
+    enddecl
+    int setup(){ begin self.k = 7; self.item = new(B); return 1; end }
+    int run(){ begin return self.item.f() + self.k; end }
+}
+endclass
+decl
+    Holder h;
+    int call(A p);
+    int main();
+enddecl
+int call(A p){
+    decl A loc; enddecl
+    begin
+        loc = p;
+        return loc.f();
+    end
+}
+int main(){
+    decl A a; int r; enddecl
+    begin
+        initialize();
+        h = new(Holder);
+        r = h.setup();
+        a = new(B);
+        write(call(a));
+        write(h.run());
+        return 0;
+    end
+}

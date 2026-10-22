@@ -1,0 +1,38 @@
+class
+A {
+    decl
+        int f();
+        int g();
+    enddecl
+    int f(){ begin return 1; end }
+    int g(){ begin return self.f(); end }
+}
+B extends A {
+    decl
+        int f();
+    enddecl
+    int f(){ begin return 2; end }
+}
+endclass
+decl
+    A x;
+    int n;
+    int main();
+enddecl
+int main(){
+    decl int r; enddecl
+    begin
+        initialize();
+        read(n);
+        if (n > 0) then
+            x = new(A);
+        else
+            x = new(B);
+        endif;
+        r = x.f();
+        write(r);
+        r = x.g();
+        write(r);
+        return 0;
+    end
+}
