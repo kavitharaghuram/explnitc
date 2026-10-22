@@ -1,0 +1,42 @@
+class
+Counter {
+    decl
+        int count;
+        int init();
+        int inc(int by);
+    enddecl
+    int init(){ begin self.count = 0; return 1; end }
+    int inc(int by){ begin self.count = self.count + by; return self.count; end }
+}
+Pair {
+    decl
+        Counter a;
+        int setup();
+        int bump();
+    enddecl
+    int setup(){
+        decl int t; enddecl
+        begin
+            self.a = new(Counter);
+            t = self.a.init();
+            return t;
+        end
+    }
+    int bump(){ begin return self.a.inc(1); end }
+}
+endclass
+decl
+    Pair p;
+    int main();
+enddecl
+int main(){
+    decl int x; enddecl
+    begin
+        initialize();
+        p = new(Pair);
+        x = p.setup();
+        x = p.bump();
+        write(p.bump());
+        return 0;
+    end
+}

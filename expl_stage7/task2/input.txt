@@ -1,0 +1,35 @@
+class
+Counter {
+    decl
+        int count;
+        int init();
+        int inc(int by);
+        int get();
+    enddecl
+    int init(){ begin self.count = 0; return 1; end }
+    int inc(int by){ begin self.count = self.count + by; return self.count; end }
+    int get(){ begin return self.count; end }
+}
+endclass
+decl
+    Counter c, d;
+    int main();
+enddecl
+int main(){
+    decl int x; enddecl
+    begin
+        initialize();
+        c = new(Counter);
+        d = new(Counter);
+        x = c.init();
+        x = d.init();
+        x = c.inc(5);
+        x = d.inc(7);
+        x = c.inc(3);
+        write(c.get());
+        write(d.get());
+        delete(c);
+        delete(d);
+        return 0;
+    end
+}
