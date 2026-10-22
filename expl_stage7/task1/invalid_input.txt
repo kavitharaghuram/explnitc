@@ -1,0 +1,33 @@
+class
+Counter {
+    decl
+        int count;
+        int init();
+        int get();
+    enddecl
+    int init(){
+        begin
+            self.count = 0;
+            return 1;
+        end
+    }
+    int get(){
+        begin
+            return self.count;
+        end
+    }
+}
+endclass
+decl
+    Counter c;
+    int main();
+enddecl
+int main(){
+    decl int x; enddecl
+    begin
+        c = new(Counter);
+        x = c.init();
+        write(c.count);
+        return 0;
+    end
+}

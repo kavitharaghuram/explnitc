@@ -1,0 +1,40 @@
+type
+  node { int val; node next; }
+endtype
+class
+Counter {
+    decl
+        int count;
+        node head;
+        int init();
+        int inc(int by);
+        int get();
+    enddecl
+    int init(){ begin self.count = 0; self.head = NULL; return 1; end }
+    int inc(int by){ begin self.count = self.count + by; return self.count; end }
+    int get(){ begin return self.count; end }
+}
+Pair {
+    decl
+        Counter a;
+        int bump();
+    enddecl
+    int bump(){ decl int t; enddecl begin t = self.a.inc(1); return t; end }
+}
+endclass
+decl
+    Counter c;
+    Pair p;
+    int main();
+enddecl
+int main(){
+    decl int x; enddecl
+    begin
+        c = new(Counter);
+        c.init();
+        x = c.inc(5);
+        write(c.get());
+        delete(c);
+        return 0;
+    end
+}
