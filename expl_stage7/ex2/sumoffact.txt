@@ -1,0 +1,64 @@
+class
+Fact {
+    decl
+        int f(int n);
+    enddecl
+    int f(int n){
+        decl int r; enddecl
+        begin
+            if (n <= 1) then
+                r = 1;
+            else
+                r = n * self.f(n - 1);
+            endif;
+            return r;
+        end
+    }
+}
+Sum {
+    decl
+        Fact fa;
+        int setup();
+        int id(int k);
+        int sumTo(int n);
+    enddecl
+    int setup(){
+        begin
+            self.fa = new(Fact);
+            return 1;
+        end
+    }
+    int id(int k){
+        begin
+            return k;
+        end
+    }
+    int sumTo(int n){
+        decl int i, s; enddecl
+        begin
+            i = 1;
+            s = 0;
+            while (i <= n) do
+                s = s + self.fa.f(i);
+                i = i + 1;
+            endwhile;
+            return s;
+        end
+    }
+}
+endclass
+decl
+    Sum sm;
+    int main();
+enddecl
+int main(){
+    decl int n, x; enddecl
+    begin
+        initialize();
+        sm = new(Sum);
+        x = sm.setup();
+        read(n);
+        write(sm.sumTo(sm.id(n)));
+        return 0;
+    end
+}

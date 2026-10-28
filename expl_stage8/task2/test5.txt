@@ -1,0 +1,43 @@
+class
+A {
+    decl
+        int f1();
+    enddecl
+    int f1(){
+        begin
+            write(11);
+            return 0;
+        end
+    }
+}
+B extends A {
+    decl
+        int f1();
+    enddecl
+    int f1(){
+        begin
+            write(21);
+            return 1;
+        end
+    }
+}
+endclass
+decl
+    A obj;
+    int main();
+enddecl
+int main(){
+    decl int n, r; enddecl
+    begin
+        initialize();
+        read(n);
+        if (n > 0) then
+            obj = new(A);
+        else
+            obj = new(B);
+        endif;
+        r = obj.f1();
+        write(r);
+        return 0;
+    end
+}

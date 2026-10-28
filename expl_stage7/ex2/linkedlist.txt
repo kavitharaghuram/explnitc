@@ -1,0 +1,62 @@
+type
+    Node { int val; Node next; }
+endtype
+decl
+    Node head;
+    int build(int n);
+    int printList(Node h);
+    int freeList(Node h);
+    int main();
+enddecl
+int build(int n){
+    decl int i, v; Node p, q; enddecl
+    begin
+        head = NULL;
+        i = 0;
+        while (i < n) do
+            read(v);
+            p = alloc();
+            p.val = v;
+            p.next = NULL;
+            if (head == NULL) then
+                head = p;
+            else
+                q.next = p;
+            endif;
+            q = p;
+            i = i + 1;
+        endwhile;
+        return 1;
+    end
+}
+int printList(Node h){
+    begin
+        while (h != NULL) do
+            write(h.val);
+            h = h.next;
+        endwhile;
+        return 1;
+    end
+}
+int freeList(Node h){
+    decl Node nxt; enddecl
+    begin
+        while (h != NULL) do
+            nxt = h.next;
+            free(h);
+            h = nxt;
+        endwhile;
+        return 1;
+    end
+}
+int main(){
+    decl int n, x; enddecl
+    begin
+        initialize();
+        read(n);
+        x = build(n);
+        x = printList(head);
+        x = freeList(head);
+        return 0;
+    end
+}

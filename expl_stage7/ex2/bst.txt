@@ -1,0 +1,116 @@
+type
+    Node { int val; Node left; Node right; }
+endtype
+class
+BST {
+    decl
+        Node root;
+        int init();
+        int insert(int x);
+        Node insertNode(Node t, int x);
+        int walk(Node t, int mode);
+        int inorder();
+        int preorder();
+        int postorder();
+    enddecl
+    int init(){
+        begin
+            self.root = NULL;
+            return 1;
+        end
+    }
+    int insert(int x){
+        begin
+            self.root = self.insertNode(self.root, x);
+            return 1;
+        end
+    }
+    Node insertNode(Node t, int x){
+        decl Node n; enddecl
+        begin
+            if (t == NULL) then
+                n = alloc();
+                n.val = x;
+                n.left = NULL;
+                n.right = NULL;
+                return n;
+            endif;
+            if (x < t.val) then
+                t.left = self.insertNode(t.left, x);
+            else
+                t.right = self.insertNode(t.right, x);
+            endif;
+            return t;
+        end
+    }
+    int walk(Node t, int mode){
+        decl int r; enddecl
+        begin
+            if (t != NULL) then
+                if (mode == 2) then
+                    write(t.val);
+                endif;
+                r = self.walk(t.left, mode);
+                if (mode == 1) then
+                    write(t.val);
+                endif;
+                r = self.walk(t.right, mode);
+                if (mode == 3) then
+                    write(t.val);
+                endif;
+            endif;
+            return 1;
+        end
+    }
+    int inorder(){
+        decl int r; enddecl
+        begin
+            r = self.walk(self.root, 1);
+            return 1;
+        end
+    }
+    int preorder(){
+        decl int r; enddecl
+        begin
+            r = self.walk(self.root, 2);
+            return 1;
+        end
+    }
+    int postorder(){
+        decl int r; enddecl
+        begin
+            r = self.walk(self.root, 3);
+            return 1;
+        end
+    }
+}
+endclass
+decl
+    BST tree;
+    int arr[100];
+    int main();
+enddecl
+int main(){
+    decl int x, n, i, cnt; enddecl
+    begin
+        initialize();
+        tree = new(BST);
+        x = tree.init();
+        cnt = 0;
+        read(n);
+        while (n != 0) do
+            arr[cnt] = n;
+            cnt = cnt + 1;
+            read(n);
+        endwhile;
+        i = 0;
+        while (i < cnt) do
+            x = tree.insert(arr[i]);
+            i = i + 1;
+        endwhile;
+        x = tree.inorder();
+        x = tree.preorder();
+        x = tree.postorder();
+        return 0;
+    end
+}
